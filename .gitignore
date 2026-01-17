@@ -1,0 +1,10 @@
+# Admin panel - keep local only, never push to GitHub
+admin.html
+
+# Documentation files
+FIREBASE_SETUP.md
+firebase-rules.json
+.vercelignore
+
+# Local files
+*.zip
