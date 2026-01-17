@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-  <rect width="200" height="200" fill="#fef2f2"/>
-  <circle cx="100" cy="75" r="35" fill="#fecaca"/>
-  <ellipse cx="100" cy="160" rx="50" ry="35" fill="#fecaca"/>
-  <text x="100" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#b91c1c">No Photo</text>
-</svg>
