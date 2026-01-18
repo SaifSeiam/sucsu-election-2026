@@ -1,23 +1,27 @@
 ﻿<!DOCTYPE html>
 <html lang="bn">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUCSU Election 2026 - Executive Posts</title>
-    <link rel="icon" href="https://res.cloudinary.com/dcotsbl7h/image/upload/w_64,h_64,f_auto,q_auto/sucsu-logo" type="image/png">
-    
+    <link rel="icon" href="https://res.cloudinary.com/dcotsbl7h/image/upload/w_64,h_64,f_auto,q_auto/sucsu-logo"
+        type="image/png">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-    
+
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
-    
+
     <style>
         * {
             margin: 0;
@@ -82,7 +86,7 @@
             width: 90px;
             height: 90px;
             object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
 
         .header-text h1 {
@@ -267,7 +271,7 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
             border: 3px solid var(--primary);
             flex-shrink: 0;
         }
@@ -277,8 +281,8 @@
             height: 70px;
             border-radius: 14px;
             overflow: hidden;
-            border: 3px solid rgba(255,255,255,0.9);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            border: 3px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
             flex-shrink: 0;
             background: var(--bg-light);
         }
@@ -308,14 +312,14 @@
             height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid rgba(255,255,255,0.98);
+            border: 5px solid rgba(255, 255, 255, 0.98);
             background: var(--bg-light);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
         .card-header-info {
             flex: 1;
-            background: rgba(0,0,0,0.2);
+            background: rgba(0, 0, 0, 0.2);
             padding: 12px 16px;
             border-radius: 10px;
             backdrop-filter: blur(4px);
@@ -400,7 +404,7 @@
 
         .votes-label {
             font-size: 1rem;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255, 255, 255, 0.9);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-bottom: 8px;
@@ -411,7 +415,7 @@
             font-size: 2.5rem;
             font-weight: 800;
             color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         /* Refresh Button */
@@ -446,7 +450,9 @@
         }
 
         @keyframes spin {
-            100% { transform: rotate(360deg); }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .toast {
@@ -734,18 +740,27 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
         <div class="header-container">
             <div class="header-brand">
                 <a href="/" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="https://res.cloudinary.com/dcotsbl7h/image/upload/w_180,h_180,f_auto,q_auto/sucsu-logo" alt="SUST Logo" class="header-logo">
+                    <img src="https://res.cloudinary.com/dcotsbl7h/image/upload/w_180,h_180,f_auto,q_auto/sucsu-logo"
+                        alt="SUST Logo" class="header-logo">
                 </a>
                 <div class="header-text">
                     <h1>শাকসু ও হল সংসদ নির্বাচন ২০২৬</h1>
@@ -801,15 +816,16 @@
     <!-- Toast -->
     <div class="toast" id="toast">Updated successfully</div>
 
-    <!-- Adsterra Banner Ad -->
-    <div style="display: flex; justify-content: center; padding: 20px 0; background: var(--bg-light);">
+    <!-- Adsterra Banner Ad (Sticky Bottom) -->
+    <div
+        style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: center; padding: 10px 0; background: rgba(255,255,255,0.95); box-shadow: 0 -2px 10px rgba(0,0,0,0.15); backdrop-filter: blur(8px);">
         <script>
             atOptions = {
-                'key' : '1ad43192f9f39c68d59e373944cfff9c',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                'params' : {}
+                'key': '1ad43192f9f39c68d59e373944cfff9c',
+                'format': 'iframe',
+                'height': 50,
+                'width': 320,
+                'params': {}
             };
         </script>
         <script src="https://www.highperformanceformat.com/1ad43192f9f39c68d59e373944cfff9c/invoke.js"></script>
@@ -818,7 +834,9 @@
     <!-- Footer -->
     <footer class="footer">
         <p>© 2026 SaifSeiam | Hobby Project | Student of SUST, Sylhet</p>
-        <p style="margin-top: 8px;"><a href="/privacy" style="color: white; text-decoration: none;">Privacy</a> | <a href="/terms" style="color: white; text-decoration: none;">Terms</a> | <a href="mailto:saifseiam24@gmail.com" style="color: white; text-decoration: none;">Contact</a></p>
+        <p style="margin-top: 8px;"><a href="/privacy" style="color: white; text-decoration: none;">Privacy</a> | <a
+                href="/terms" style="color: white; text-decoration: none;">Terms</a> | <a
+                href="mailto:saifseiam24@gmail.com" style="color: white; text-decoration: none;">Contact</a></p>
     </footer>
 
     <script>
@@ -861,13 +879,13 @@
 
         // Firebase Configuration - Replace with your project config
         const firebaseConfig = {
-        apiKey: "AIzaSyCM-AkGTClnD63ghUZYlxXdHEM_fwrd_NM",
-        authDomain: "sucsu-election-2026.firebaseapp.com",
-        databaseURL: "https://sucsu-election-2026-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "sucsu-election-2026",
-        storageBucket: "sucsu-election-2026.firebasestorage.app",
-        messagingSenderId: "1061547250670",
-        appId: "1:1061547250670:web:0f63f057c7040c35a234ff"
+            apiKey: "AIzaSyCM-AkGTClnD63ghUZYlxXdHEM_fwrd_NM",
+            authDomain: "sucsu-election-2026.firebaseapp.com",
+            databaseURL: "https://sucsu-election-2026-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "sucsu-election-2026",
+            storageBucket: "sucsu-election-2026.firebasestorage.app",
+            messagingSenderId: "1061547250670",
+            appId: "1:1061547250670:web:0f63f057c7040c35a234ff"
         };
 
         // Initialize Firebase
@@ -877,17 +895,17 @@
         async function loadCandidates() {
             // Render static candidate data first
             renderCandidates();
-            
+
             // Fetch votes once on page load (refresh to see updates)
             try {
                 const snapshot = await database.ref('votes').once('value');
                 const data = snapshot.val() || {};
                 updateVoteCounts(data);
-                
+
                 const now = new Date();
-                const options = { 
-                    year: 'numeric', 
-                    month: 'long', 
+                const options = {
+                    year: 'numeric',
+                    month: 'long',
                     day: 'numeric',
                     hour: '2-digit',
                     minute: '2-digit',
@@ -899,7 +917,7 @@
                 console.error('Firebase error:', error);
                 updateLastUpdated('ভোট আপডেট করতে সমস্যা হয়েছে');
             }
-            
+
             lucide.createIcons();
         }
 
@@ -954,7 +972,7 @@
 
         // Cloudinary base URL - your cloud name is dcotsbl7h
         const CLOUDINARY_BASE = 'https://res.cloudinary.com/dcotsbl7h/image/upload';
-        
+
         // Get optimized photo URL with caching
         // Photos should be uploaded with "Use filename as Public ID" enabled
         // So regNo 2020331045 becomes public ID 2020331045
@@ -1019,6 +1037,5 @@
         }
     </script>
 </body>
+
 </html>
-
-
