@@ -622,7 +622,26 @@
             }
 
             .candidate-name {
-                font-size: 1rem;
+                font-size: 1.125rem;
+                margin-bottom: 8px;
+            }
+
+            .candidate-meta {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 6px;
+                margin-bottom: 12px;
+                justify-content: flex-start;
+                align-items: center;
+                width: 100%;
+            }
+
+            .meta-badge {
+                padding: 4px 8px;
+                font-size: 0.7rem;
+                border-radius: 4px;
+                white-space: nowrap;
             }
 
             .candidate-details {
@@ -638,16 +657,27 @@
                 padding: 6px 12px;
             }
 
+            .reg-row,
+            .panel-row {
+                margin-bottom: 8px;
+            }
+
+            .votes-box {
+                padding: 14px;
+                border-radius: 10px;
+            }
+
             .vote-section {
                 padding: 16px;
             }
 
             .votes-label {
-                font-size: 0.875rem;
+                font-size: 0.75rem;
+                margin-bottom: 4px;
             }
 
             .votes-count {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
             .refresh-btn {
@@ -937,8 +967,6 @@
                         <div class="candidate-meta">
                             <span class="meta-badge badge-dept">${c.department}</span>
                             ${c.session ? `<span class="meta-badge badge-session">${c.session}</span>` : ''}
-                        </div>
-                        <div class="reg-row">
                             <span class="meta-badge badge-reg">${c.regNo}</span>
                         </div>
                         <div class="panel-row">
