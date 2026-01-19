@@ -809,6 +809,14 @@
         </div>
     </main>
 
+    <!-- Native Banner Ads (placed between sections via JS) -->
+    <div id="nativeAd1" class="native-ad-container"
+        style="display:none;justify-content:center;padding:20px 0;background:var(--bg-white);border-radius:12px;margin-bottom:24px;border:2px solid var(--border);">
+        <script async="async" data-cfasync="false"
+            src="https://pl28512476.effectivegatecpm.com/48b7905420bc373a71782fcf7da04ff7/invoke.js"></script>
+        <div id="container-48b7905420bc373a71782fcf7da04ff7"></div>
+    </div>
+
     <!-- Refresh Button -->
     <button class="refresh-btn" id="refreshBtn" onclick="refreshPage()">
         <i data-lucide="refresh-cw" style="width:18px;height:18px;"></i>
@@ -931,7 +939,7 @@
                 if (candidatesData[post] && candidatesData[post].length > 0) {
                     const config = postConfig[post];
                     html += `
-                        <section class="post-section">
+                        <section class="post-section" id="section-${post}">
                             <div class="post-header">
                                 <h3>${config.name}</h3>
                                 <span>| ${config.nameEn}</span>
@@ -945,6 +953,14 @@
             });
 
             container.innerHTML = html;
+
+            // Move native ad between first and second section
+            const nativeAd = document.getElementById('nativeAd1');
+            const firstSection = document.getElementById('section-VP');
+            if (nativeAd && firstSection && firstSection.nextSibling) {
+                firstSection.parentNode.insertBefore(nativeAd, firstSection.nextSibling);
+                nativeAd.style.display = 'flex';
+            }
         }
 
         function updateVoteCounts(data) {
@@ -986,33 +1002,34 @@
         function createCard(c) {
             const photoUrl = getPhotoUrl(c.regNo);
             return `
-                <div class="candidate-card">
-                    <div class="card-header">
-                        <div class="ballot-box">
-                            <span class="ballot-label">Ballot</span>
-                            <span class="ballot-num">${c.ballotNo}</span>
-                        </div>
-                        <div class="photo-box">
-                            <img src="${photoUrl}" alt="${c.name}" loading="lazy" onerror="this.src='https://res.cloudinary.com/dcotsbl7h/image/upload/w_200,h_200,f_auto,q_auto/placeholder'">
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="candidate-name">${c.name}</h4>
-                        <div class="candidate-meta">
-                            <span class="meta-badge badge-dept">${c.department}</span>
-                            ${c.session ? `<span class="meta-badge badge-session">${c.session}</span>` : ''}
-                            <span class="meta-badge badge-reg">${c.regNo}</span>
-                        </div>
-                        <div class="panel-row">
-                            <span class="meta-badge" style="${getPanelColor(c.panel)}">${c.panel}</span>
-                        </div>
-                        <div class="votes-box">
-                            <div class="votes-label">প্রাপ্ত ভোট</div>
-                            <div class="votes-count" id="votes-${c.regNo}">০</div>
-                        </div>
-                    </div>
-                </div>
-            `;
+    <div class="candidate-card">
+        <div class="card-header">
+            <div class="ballot-box">
+                <span class="ballot-label">Ballot</span>
+                <span class="ballot-num">${c.ballotNo}</span>
+            </div>
+            <div class="photo-box">
+                <img src="${photoUrl}" alt="${c.name}" loading="lazy"
+                    onerror="this.src='https://res.cloudinary.com/dcotsbl7h/image/upload/w_200,h_200,f_auto,q_auto/placeholder'">
+            </div>
+        </div>
+        <div class="card-body">
+            <h4 class="candidate-name">${c.name}</h4>
+            <div class="candidate-meta">
+                <span class="meta-badge badge-dept">${c.department}</span>
+                ${c.session ? `<span class="meta-badge badge-session">${c.session}</span>` : ''}
+                <span class="meta-badge badge-reg">${c.regNo}</span>
+            </div>
+            <div class="panel-row">
+                <span class="meta-badge" style="${getPanelColor(c.panel)}">${c.panel}</span>
+            </div>
+            <div class="votes-box">
+                <div class="votes-label">প্রাপ্ত ভোট</div>
+                <div class="votes-count" id="votes-${c.regNo}">০</div>
+            </div>
+        </div>
+    </div>
+    `;
         }
 
         function refreshPage() {
@@ -1026,9 +1043,9 @@
         function updateLastUpdated(timestamp) {
             const el = document.getElementById('lastUpdated');
             el.innerHTML = `
-                <i data-lucide="clock" style="width:18px;height:18px;"></i>
-                <span>সর্বশেষ আপডেট: ${timestamp}</span>
-            `;
+    <i data-lucide="clock" style="width:18px;height:18px;"></i>
+    <span>সর্বশেষ আপডেট: ${timestamp}</span>
+    `;
             lucide.createIcons();
         }
 
